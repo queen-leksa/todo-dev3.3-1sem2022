@@ -1,11 +1,18 @@
-import React from "react";
-import Logo from "./assets/logo.svg";
+import React, {useContext, useState} from "react";
+import Form from "./components/Form";
+import List from "./components/List";
+import Ctx from "./Ctx";
 
 export default () => {
-    return <>
-        <h1>
-            Simple React App
-            <img src={Logo} alt="React"/>
-        </h1>
-    </>
+    const [arr, upd] = useState(["Сделать блог", "Поплакать"]);
+
+    return <Ctx.Provider value={{
+        tasks: arr,
+        updTasks: upd
+    }}>
+        <div>
+            <Form/>
+            <List/>
+        </div>
+    </Ctx.Provider>
 }
